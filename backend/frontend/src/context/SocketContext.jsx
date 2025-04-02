@@ -13,7 +13,8 @@ export const SocketProvider = ({ children }) => {
     const [socket, setSocket] = useState(null);
     const [authUser] = useAuth();
     const [onlineUsers,setOnlineUser] = useState([]);
-
+    // https://chatapp-yt-emjq.onrender.com
+    // http://localhost:4001    
     useEffect(() => {
         if (authUser) {
             const newSocket = io("https://chatapp-yt-emjq.onrender.com", {

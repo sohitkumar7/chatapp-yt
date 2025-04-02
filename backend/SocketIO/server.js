@@ -8,6 +8,7 @@ const server = http.createServer(app);
 const io=new Server(server,{
     cors:{
         origin:"https://chatapp-yt-emjq.onrender.com",
+        // origin:"http://localhost:3001",
         methods:["GET","POST"]
     }
 })
