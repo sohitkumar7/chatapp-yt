@@ -6,7 +6,7 @@ import userRoute from "./routes/user.route.js"
 import messageRoute from "./routes/message.route.js"
 import cookieParser from "cookie-parser";
 import { app, server } from "./SocketIO/server.js";
-
+import path from "path";
 
 dotenv.config();
 
@@ -28,6 +28,21 @@ try {
 // routes
 app.use("/api/user",userRoute);
 app.use("/api/message",messageRoute);
+
+
+
+
+// ------------------------code for deployment--------------------//
+
+if (process.env.NODE_ENV === "production") {
+  const dirPath = path.resolve();
+
+  app.use(express.static("./frontend/dist"));
+  app.get("*",(req,res)=>{
+    res.sendFile(path.resolve(dirPath,"./frontend/dist","index.html"))
+  })
+}
+
 
 server.listen(port, () => {
     console.log(`Example app listening at port ${port}`); 
