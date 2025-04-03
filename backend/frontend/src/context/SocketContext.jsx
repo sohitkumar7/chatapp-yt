@@ -17,10 +17,11 @@ export const SocketProvider = ({ children }) => {
     // http://localhost:4001    
     useEffect(() => {
         if (authUser) {
-            const newSocket = io("https://chatapp-yt-emjq.onrender.com",{
+            const newSocket = io("http://localhost:4001",{
                 query: {
                     userId: authUser.user._id,
                 },
+                withCredentials:true,
             });
             setSocket(newSocket);
             newSocket.on("getOnlineUsers",(users)=>{
