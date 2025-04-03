@@ -15,7 +15,7 @@ const useSendMessage = () => {
         {message}
       );
 
-      console.log("usesendMessage render",res.data.newMessage);
+      // console.log("usesendMessage render",res.data.newMessage);
       setMessage([...messages,res.data.newMessage]);
 
       setloading(false);
